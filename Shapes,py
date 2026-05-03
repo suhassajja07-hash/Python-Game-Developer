@@ -1,0 +1,25 @@
+import pgzrun
+import random
+WIDTH=400
+HEIGHT=400
+
+def draw():
+    screen.fill("black")
+    s=350
+    for i in range(6):
+        R=random.randint(0,255)
+        G=random.randint(0,255)
+        B=random.randint(0,255)
+
+        r=Rect(0,0,s,s)
+        r.center=WIDTH/2,HEIGHT/2
+        screen.draw.rect(r,(R,G,B))
+        s=s-50
+
+
+
+
+
+
+
+pgzrun.go()
