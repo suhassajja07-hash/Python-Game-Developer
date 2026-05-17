@@ -1,0 +1,29 @@
+import pgzrun
+WIDTH = 600
+HEIGHT = 500
+
+def draw():
+    screen.fill("WHITE")
+
+    
+    screen.draw.text("Create a pattern using circles, rectangles and lines.",(40, 90),color="DARKBLUE",fontsize=28)
+    
+
+   
+
+    # Rectangles
+    screen.draw.filled_rect(Rect((100, 180), (80, 80)), "RED")
+    screen.draw.filled_rect(Rect((260, 180), (80, 80)), "GREEN")
+    screen.draw.filled_rect(Rect((420, 180), (80, 80)), "BLUE")
+
+    # Circles
+    screen.draw.filled_circle((140, 340), 40, "YELLOW")
+    screen.draw.filled_circle((300, 340), 40, "ORANGE")
+    screen.draw.filled_circle((460, 340), 40, "PURPLE")
+
+    # Lines
+    screen.draw.line((100, 180), (500, 420), "BLACK")
+    screen.draw.line((500, 180), (100, 420), "BLACK")
+    screen.draw.line((0, 250), (600, 250), "GRAY")
+
+pgzrun.go()
