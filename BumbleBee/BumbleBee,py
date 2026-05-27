@@ -6,19 +6,26 @@ TITLE="Bumble Bee and Flower"
 
 score=0
 
+gameover=False
+
 bee=Actor("bee")
 bee.x=random.randint(20,WIDTH-20)
 bee.y=random.randint(20,HEIGHT-20)
+
 
 flower=Actor("flower")
 flower.x=random.randint(20,WIDTH-20)
 flower.y=random.randint(20,HEIGHT-20)
 
 def draw():
-   screen.blit("background",(0,0))
-   screen.draw.text(f"Score={score}",(10,10))
-   bee.draw()
-   flower.draw()
+  if not gameover:
+    screen.blit("background",(0,0))
+    screen.draw.text(f"Score={score}",(10,10))
+    bee.draw()
+    flower.draw()
+  else:
+    screen.draw.text(f"Game over your score is {score}",center=(WIDTH/2,HEIGHT/2))
+  
 
 # this function only works when pressing key, you cant hold it down
 # def on_key_down(key):
@@ -29,20 +36,24 @@ def draw():
 def update():
     global score
     if keyboard.left:
-      bee.x=bee.x-1
-    elif keyboard.right:
-      bee.x=bee.x+1
+      bee.x=bee.x-3
+    if keyboard.right:
+      bee.x=bee.x+3
     #thay need to work together so sets of if
     if keyboard.down:
-      bee.y=bee.y+1
-    elif keyboard.up:
-      bee.y=bee.y-1
+      bee.y=bee.y+3
+    if keyboard.up:
+      bee.y=bee.y-3
     if bee.colliderect(flower):
        flower.x=random.randint(20,WIDTH-20)
        flower.y=random.randint(20,HEIGHT-20)
        score=score+10
+
+def timeup():
+  global gameover
+  gameover=True
     
-       
+clock.schedule(timeup,20)       
    
 
 pgzrun.go()
