@@ -1,0 +1,50 @@
+import pgzrun
+WIDTH = 800
+HEIGHT = 600
+
+basket = Actor("apple")
+basket.x = 400
+basket.y = 550
+
+apple = Actor("apple")
+apple.x = 400
+apple.y = 0
+
+score = 0
+
+
+def draw():
+    screen.clear()
+
+    basket.draw()
+    apple.draw()
+
+    screen.draw.text("Score: " + str(score), (10, 10))
+
+
+def update():
+    global score
+
+    apple.y = apple.y + 5
+
+    if apple.colliderect(basket):
+        score = score + 1
+        apple.y = 0
+
+    
+    if apple.y > HEIGHT:
+        score = 0
+        apple.y = 0
+
+
+def on_key_down(key):
+
+    # Move left
+    if key == keys.LEFT:
+        basket.x = basket.x - 20
+
+    # Move right
+    if key == keys.RIGHT:
+        basket.x = basket.x + 20
+
+pgzrun.go()
